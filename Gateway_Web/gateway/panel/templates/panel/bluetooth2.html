@@ -1,0 +1,45 @@
+{% extends "panel/base.html" %}
+{% load static %}
+{% block content %}
+<div class="main-content-inner">
+    <div class="row">
+        <!-- data table start -->
+        <div class=" col-lg-6  mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-sm-flex flex-wrap justify-content-between mb-4 align-items-center">
+                        <h4 class="align-items-center">Dispositivos Bluetooth</h4>
+                        <div class="tm-social">
+                            <!--a href="/blue_scan/">refrescar lista</a-->
+                            <a href="/blue_scan/">refrescar<i class="fa fa-bluetooth-b"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-box">
+                        <div class="s-member">
+                            <div class="media align-items-center">
+                                <div class="media-body ml-5">
+                                    <span><p>Cantidad de dispositivos: {{cantidad}}</p></span> 
+                                    <span>
+                                        <ul>
+                                            {% if aparatos %}
+                                            {% for aparato in aparatos %}
+                                            <li>{{aparato}}</li>
+                                            {% endfor %}
+                                            {% else %}
+                                            <span><p>No hay elementos que mostrar</p></span>
+                                            {% endif %}
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- data table end -->
+        <!-- Primary table start -->
+    </div>
+</div>
+{% endblock %}

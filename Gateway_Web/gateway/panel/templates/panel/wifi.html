@@ -1,0 +1,177 @@
+
+
+
+
+{% extends "panel/base.html" %}
+{% load static %}
+{% block content %}
+<div class="main-content-inner">
+    <div class="row">
+        <!-- data table start -->
+        <div class="col-lg-6 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-area text-center">Información del Access Point</h4>
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table class="table text-left">
+
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Interfaz:</th>
+                                        <td>wlan0</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">SSID:</th>
+                                        <td>{{SSID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Dirección IPv4:</th>
+                                        <td>{{ip_actual}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Contraseña:</th>
+                                        <td>{{contrasena}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Canal:</th>
+                                        <td>{{canal}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Máscara de subred:</th>
+                                        <td>{{netmask}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Dirección IP inicio:</th>
+                                        <td>{{ip_init}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Dirección IP fin:</th>
+                                        <td>{{ip_fin}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tiempo de asignacion IP:</th>
+                                        <td>{{time}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="header-title text-info">Configuración Básica</h1>
+                    <form id="basico" class="contact-form" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="SSID">SSID</label>
+                            <input type="text" class="form-control" name="SSID" placeholder="S-PIICO" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="passwd">Contraseña</label>
+                            <input type="password" class="form-control" name="passwd" placeholder="********"required="">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Canal</label>
+                            <select class="custom-select" name = "channel">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+                        </div>
+                        <button onclick="guardarBasico()" class="btn btn-primary mt-4 pr-4 pl-4">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 mt-5">
+        </div>
+        <div class="col-lg-6 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="header-title text-info">Configuración Avanzada</h1>
+                    <form id = "avanzado" class="contact-form" method="POST">
+                     {% csrf_token %}
+                        <div class="form-group">
+                            <label for="ip_nueva">Nueva dirección IPv4</label>
+                            <input type="text" class="form-control" name="ip_nueva" placeholder="192.168.4.1"
+                                required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="ip_init">Dirección IP inicio</label>
+                            <input type="text" class="form-control" name="ip_init" placeholder="192.168.4.2"
+                                required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="ip_fin">Dirección IP Fin</label>
+                            <input type="text" class="form-control" name="ip_fin" placeholder="192.168.4.25"
+                                required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="ip_init">Máscara de subred</label>
+                            <input type="text" class="form-control" name="netmask" placeholder="255.255.255.0"
+                                required="">
+                        </div>
+                        <button onclick ="guardarAvanzado()" class="btn btn-primary mt-4 pr-4 pl-4">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function getCookie(name) {
+      let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+function guardarBasico(){
+    var form = new FormData(document.getElementById('basico'));
+    fetch("/AP_basic_config/",
+    {
+        method:"POST",
+        body:form,
+        headers:{
+          "X-CSRFToken":getCookie('csrftoken'),
+        }
+    })
+}
+function guardarAvanzado(){
+    var form = new FormData(document.getElementById('avanzado'));
+    fetch("/AP_advanced_config/",
+    {
+        method:"POST",
+        body:form,
+        headers:{
+          "X-CSRFToken":getCookie('csrftoken'),
+        }
+    })
+}
+</script>
+{% endblock %}

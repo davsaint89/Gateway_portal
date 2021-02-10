@@ -1,0 +1,244 @@
+{% extends "panel/base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- page title area end -->
+<div class="main-content-inner">
+    <div class="row">        
+         <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-center">Tópicos de Comunicación Pública</h4><br>
+                            <img src="{% static 'assets/images/media/brokerPublico.jpg' %}"><br>
+                            
+                        </div>
+                    </div>
+                </div>
+        <div class="col-lg-6 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-info">Suscriptor</h2>
+                    <h4 class="header-title">Configuraciones actuales</h4>
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table class="table text-center">
+                                <thead class="text-uppercase">
+                                    <tr>
+                                        <th scope="col">ID Tópico</th>
+                                        <th scope="col">Tópico</th>
+                                        <th scope="col">Puerto</th>
+                                        <th scope="col">Host</th>
+                                        <th scope="col">Qos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>tópico_1</th>
+                                        <th>{{t3}}</th>
+                                        <td>{{p3}}</td>
+                                        <td>{{h3}}</td>
+                                        <td>{{q3}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>tópico_2</th>
+                                        <th>{{t4}}</th>
+                                        <td>{{p4}}</td>
+                                        <td>{{h4}}</td>
+                                        <td>{{q4}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>tópico_3</th>
+                                        <th>{{t5}}</th>
+                                        <td>{{p5}}</td>
+                                        <td>{{h5}}</td>
+                                        <td>{{q5}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-info">Publicador</h3>
+                    <h4 class="header-title">Configuración Actual</h4>
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table class="table text-center">
+                                <thead class="text-uppercase">
+                                    <tr>
+                                        <th scope="col">ID Tópico</th>
+                                        <th scope="col">Tópico</th>
+                                        <th scope="col">Puerto</th>
+                                        <th scope="col">Host</th>
+                                        <th scope="col">QoS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>tópico_4</th>
+                                        <th>{{t1}}</th>
+                                        <td>{{p1}}</td>
+                                        <td>{{h1}}</td>
+                                        <td>{{q1}}</td>   
+                                    </tr>
+                                    <tr>
+                                        <th>tópico_5</th>
+                                        <th>{{t2}}</th>
+                                        <td>{{p2}}</td>
+                                        <td>{{h2}}</td>
+                                        <td>{{q2}}</td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-ml-5"> 
+            <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Ajustes de suscriptor</h4>
+                        <p class="text-justify">Cambio de tópicos de suscripción</p><br>
+                        <form id = "suscriptor" class="contact-form" method="POST">
+                            {% csrf_token %}
+                                <div class="col-md-7 mb-10">
+                                    <label for="puerto1">Topico_1</label>
+                                    <input type="text" class="form-control" name="nombre" placeholder="conf_l" value="" required="">
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                                <div class="col-md-7 mb-10">
+                                    <label for="puerto1">Topico_2</label>
+                                    <input type="text" class="form-control" name="nombre1" placeholder="req_l" value="" required="">
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                                <div class="col-md-7 mb-10">
+                                    <label for="puerto1">Topico_3</label>
+                                    <input type="text" class="form-control" name="nombre2" placeholder="act_l" value="" required="">
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                            <button onclick="suscriptor()" class="btn btn-primary mt-4 pr-4 pl-4">Modificar tópicos</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-ml-5"> 
+            <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Ajustes Publicador</h4>
+                        <p class="text-justify">Cambio de tópicos de publicación</p><br>
+                        <form id = "publisher" class="contact-form" method="POST">
+                            {% csrf_token %}
+                                <div class="col-md-7 mb-10">
+                                    <label for="puerto1">Tópico_4</label>
+                                    <input type="text" class="form-control" name="nombre2" placeholder="sen_l" value="" required="">
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                                <div class="col-md-7 mb-10">
+                                    <label for="puerto1">Topico_5</label>
+                                    <input type="text" class="form-control" name="nombre3" placeholder="sta_l" value="" required="">
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                            <button onclick="publisher()" class="btn btn-primary mt-4 pr-4 pl-4">Modificar tópicos</button>
+                        </form>
+                    </div>
+                </div>
+            </div>   
+            <div class="col-lg-3 col-ml-5"> 
+            <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Ajustes del Bróker</h4>
+                        <form id = "broker" class="contact-form" method="POST">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                    <label class="col-form-label">Puerto</label>
+                                    <select class="custom-select" name = "port">
+                                        <option value="1883">1883</option>
+                                        <option value="8883">8883</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Calidad de servicio</label>
+                                    <select class="custom-select" name = "qos">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
+                                </div>
+                            <button onclick="broker()" class="btn btn-primary mt-4 pr-4 pl-4">Guardar ajustes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function getCookie(name) {
+      let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+function suscriptor(){
+    var form = new FormData(document.getElementById('suscriptor'));
+    fetch("/suscriptor/",
+    {
+        method:"POST",
+        body:form,
+        headers:{
+          "X-CSRFToken":getCookie('csrftoken'),
+        }
+    })
+}
+
+function publisher(){
+    var form = new FormData(document.getElementById('publisher'));
+    fetch("/publisher/",
+    {
+        method:"POST",
+        body:form,
+        headers:{
+          "X-CSRFToken":getCookie('csrftoken'),
+        }
+    })
+}
+
+function broker(){
+    var form = new FormData(document.getElementById('broker'));
+    fetch("/broker/",
+    {
+        method:"POST",
+        body:form,
+        headers:{
+          "X-CSRFToken":getCookie('csrftoken'),
+        }
+    })
+}
+
+</script>
+{% endblock %}

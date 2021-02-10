@@ -1,0 +1,272 @@
+{% extends "panel/base.html" %}
+{% load static %}
+{% block content %}
+<div class="main-content-inner">
+    <div class="row">
+        <!-- data table start -->
+        <div class="col-lg-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="header-title">Estacion 2</h3>
+                    <a class="btn btn-rounded btn-primary mb-3" href="/consulta/" role="button">Refrescar lista</a>
+                    <a class="btn btn-rounded btn-success mb-3" href = "/estados/"role="button">Consultar estado</a>
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table id="dataTable" class="table text-center">
+                                <thead class="text-uppercase">
+                                    <tr class="table-active">
+                                        <th>Dispositivo</th>
+                                        <th>Parámetro</th>
+                                        <th>Estado</th>
+                                        <th>Categorìa</th>
+                                        <th>Fecha última consulta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-primary">
+                                        <td>{{dev}}</td>
+                                        <td>{{tipo}}</td>
+                                        <td>{{est}}</td>
+                                        <td>{{clase}}</td>
+                                        <td>{{fecha}}</td>                              
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <th>{{dev1}}</th>
+                                        <td>{{tipo1}}</td>
+                                        <td>{{est1}}</td>
+                                        <td>{{clase1}}</td>
+                                        <td>{{fecha}}</td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <td>{{dev2}}</td>
+                                        <td>{{tipo2}}</td>
+                                        <td>{{est2}}</td>
+                                        <td>{{clase2}}</td>
+                                        <td>{{fecha}}</td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <td>{{dev3}}</td>
+                                        <td>{{tipo3}}</td>
+                                        <td>{{est3}}</td>
+                                        <td>{{clase3}}</td>
+                                        <td>{{fecha}}</td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <th>{{dev4}}</th>
+                                        <td>{{tipo4}}</td>
+                                        <td>{{est4}}</td>
+                                        <td>{{clase4}}</td>
+                                        <td>{{fecha}}</td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <th>{{dev5}}</th>
+                                        <td>{{tipo5}}</td>
+                                        <td>{{est5}}</td>
+                                        <td>{{clase5}}</td>
+                                        <td>{{fecha}}</td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <th>{{dev6}}</th>
+                                        <td>{{tipo6}}</td>
+                                        <td>{{est6}}</td>
+                                        <td>{{clase6}}</td>
+                                        <td>{{fecha}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="header-title text-info">Control Sensores</h1>
+                    <form class="contact-form" method="POST" action="/sensores/">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="col-form-label">Node-ID</label>
+                            <select class="custom-select" name = "id-nodo">
+                                <option value="estacion_1">estacion_1</option>
+                                <option value="estacion_2">estacion_2</option>
+                                <option value="estacion_3">estacion_3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Tipo de petición</label>
+                            <select class="custom-select" name = "request1">
+                                <option value="send">Iniciar</option>
+                                <option value="stop">Detener</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Sensor-1</label>
+                            <select class="custom-select" name = "sensor1">
+                                <option value="--">Ninguno</option>
+                                <option value="Pluviometer">Pluviometro</option>
+                                <option value="Radiation">Radiación solar</option>
+                                <option value="Temperature">Temperatura</option>
+                                <option value="Humidity">Humedad</option>
+                                <option value="Velocity">Velocidad del viento</option>
+                                <option value="Direction">Dirección del viento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Sensor-2</label>
+                            <select class="custom-select" name = "sensor2">
+                                <option value="--">Ninguno</option>
+                                <option value="Pluviometer">Pluviometro</option>
+                                <option value="Radiation">Radiación solar</option>
+                                <option value="Temperature">Temperatura</option>
+                                <option value="Humidity">Humedad</option>
+                                <option value="Velocity">Velocidad del viento</option>
+                                <option value="Direction">Dirección del viento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Sensor-3</label>
+                            <select class="custom-select" name = "sensor3">
+                                <option value="--">Ninguno</option>
+                                <option value="Pluviometer">Pluviometro</option>
+                                <option value="Radiation">Radiación solar</option>
+                                <option value="Temperature">Temperatura</option>
+                                <option value="Humidity">Humedad</option>
+                                <option value="Velocity">Velocidad del viento</option>
+                                <option value="Direction">Dirección del viento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Sensor-4</label>
+                            <select class="custom-select" name = "sensor4">
+                                <option value="--">Ninguno</option>
+                                <option value="Pluviometer">Pluviometro</option>
+                                <option value="Radiation">Radiación solar</option>
+                                <option value="Temperature">Temperatura</option>
+                                <option value="Humidity">Humedad</option>
+                                <option value="Velocity">Velocidad del viento</option>
+                                <option value="Direction">Dirección del viento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Sensor-5</label>
+                            <select class="custom-select" name = "sensor5">
+                                <option value="--">Ninguno</option>
+                                <option value="Pluviometer">Pluviometro</option>
+                                <option value="Radiation">Radiación solar</option>
+                                <option value="Temperature">Temperatura</option>
+                                <option value="Humidity">Humedad</option>
+                                <option value="Velocity">Velocidad del viento</option>
+                                <option value="Direction">Dirección del viento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Sensor-6</label>
+                            <select class="custom-select" name = "sensor6">
+                                <option value="--">Ninguno</option>
+                                <option value="Pluviometer">Pluviometro</option>
+                                <option value="Radiation">Radiación solar</option>
+                                <option value="Temperature">Temperatura</option>
+                                <option value="Humidity">Humedad</option>
+                                <option value="Velocity">Velocidad del viento</option>
+                                <option value="Direction">Dirección del viento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Protocolo-1</label>
+                            <select class="custom-select" name = "protocol-1">
+                                <option value="--">Ninguno</option>
+                                <option value="wifi">Wifi</option>
+                                <option value="bluetooth">Bluetooth</option>
+                                <option value="zigbee">Zigbee</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Protocolo-2</label>
+                            <select class="custom-select" name = "protocol-2">
+                                <option value="--">Ninguno</option>
+                                <option value="wifi">Wifi</option>
+                                <option value="bluetooth">Bluetooth</option>
+                                <option value="zigbee">Zigbee</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Protocolo-3</label>
+                            <select class="custom-select" name = "protocol-3">
+                                <option value="--">Ninguno</option>
+                                <option value="wifi">Wifi</option>
+                                <option value="bluetooth">Bluetooth</option>
+                                <option value="zigbee">Zigbee</option>
+                            </select>
+                        </div>               
+                        <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Enviar peticion al nodo</button>
+                    </form>
+                </div>
+            </div>
+         
+        </div>
+        <div class="col-lg-3 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="header-title text-info">Actuador</h1>
+                    <form class="contact-form" method="POST" action="/actuator/">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="col-form-label">Node-ID</label>
+                            <select class="custom-select" name = "node-id">
+                                <option value="estacion_1">estacion_1</option>
+                                <option value="estacion_2">estacion_2</option>
+                                <option value="estacion_3">estacion_3</option>
+                            </select>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="pass">Contraseña</label>
+                            <input type="password" class="form-control" name="pass" placeholder="*******"
+                                required="">
+                        </div> -->
+                        <div class="form-group">
+                            <label class="col-form-label">Actuador-ID</label>
+                            <select class="custom-select" name = "actuator-id">
+                                <option value="Lawn_sprinkler">aspersor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Orden</label>
+                            <select class="custom-select" name = "order">
+                                <option value="on">Encender</option>
+                                <option value="off">Apagar</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Enviar peticion al nodo</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div class="col-lg-4 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="header-title text-info">Estado de las estaciones</h1>
+                    <form class="contact-form" method="POST" action="/estados/">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="col-form-label">Node-ID</label>
+                            <select class="custom-select" name = "node-id">
+                                <option value="estacion_1">estacion_1</option>
+                                <option value="estacion_2">estacion_2</option>
+                                <option value="estacion_3">estacion_3</option>
+                            </select>
+                        </div>
+                         <div class="form-group">
+                            <label for="pass">Contraseña</label>
+                            <input type="password" class="form-control" name="pass" placeholder="*******" required="">
+                        </div> -->
+                        <!-- <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Enviar peticion al nodo</button>
+                    </form>
+                </div>
+            </div>
+        </div> --> 
+    </div>
+    
+</div>
+{% endblock %}

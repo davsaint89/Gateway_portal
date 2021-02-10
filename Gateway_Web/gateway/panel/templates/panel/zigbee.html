@@ -1,0 +1,163 @@
+{% extends "panel/base.html" %}
+{% load static %}
+{% block content %}
+<div class="main-content-inner">
+    <div class = "row">
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-area text-center">Información del Coordinador Zigbee</h4>
+                            <div class="single-table">
+                                <div class="table-responsive">
+                                    <table class="table text-left">
+                                      
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Dispositivo:</th>
+                                                <td>{{device}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">(ID) PAN ID:</th>
+                                                <td>{{pan_id}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">MAC Address:</th>
+                                                <td>{{mac_address}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Baud rate:</th>
+                                                <td>{{bauds}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Parity:</th>
+                                                <td>{{parity}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Flow Control:</th>
+                                                <td>{{flow_control}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-area">Importante:</h4><br>
+                            <p class="text-justify">Para la modificar la configuración del dispositivo coordinador la red zigbee conectado al Gateway PIICO, es necesario desconectar el modulo XBEE de la Raspberry, conectarlo en su ordenador en un puerto USB  y programarlo usando el software del fabricante.</p>
+                    
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-area">1) Instalación del software XCTU</h4><br>
+                            <p class="text-justify">En este instructivo se explica como configurar un modulo XBEE S2C como coordinador y otro como nodo.</p>
+                            <p class="text-justify">Descargue el software XCTU desde el siguiente enlace:</p>
+                            <a href = "https://www.digi.com/products/embedded-systems/digi-xbee/digi-xbee-tools/xctu#productsupport-utilities" target="_blank">XCTU</a>
+                            <p class="text-justify">Al instalar y ejecutar el software, la interfaz del programa es la siguiente</p><br>
+                            <img src="{% static 'assets/images/media/xctu_1.jpg' %}">    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-area">2) Configuración de modulos XBEE</h4><br>
+                            <p class="text-justify">Conecte los modulos XBEE en los puertos USB de su ordenador y en el software XCTU seleccione buscar dispositivos como se observa a continuación</p><br>
+                            <img src="{% static 'assets/images/media/xctu_2.jpg' %}"><br>
+                            <br><p>El programa debe abrir una ventana donde se muestran los puertos de comunicación serial donde está conectado cada modulo XBEE con el ordenador. Seleccione los puertos seriales</p>
+                            <br><img src="{% static 'assets/images/media/xctu_3.jpg' %}"><br>
+                            <p>Puede dejar los parametros que viene por defecto</p><br>
+                            <img src="{% static 'assets/images/media/xctu_4.jpg' %}"><br>
+                            <p>Al realizar este proceso se abre una ventana con los dispositivos existentes, Seleccione los dos módulos para realizar la configuración.</p>
+                            <img src="{% static 'assets/images/media/xctu_5.jpg' %}"><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Blockquotes</h4>
+                            <blockquote class="blockquote">
+                                <p class="mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius illo fuga sunt nobis possimus incidunt dolor ratione aspernatur doloremque amet, quisquam porro esse distinctio error. Delectus vitae obcaecati, suscipit velit vero illo maxime illum perferendis magnam tenetur praesentium non eligendi.</p>
+                                <footer class="blockquote-footer">Someone famous in
+                                    <cite title="Source Title">Source Title
+                                    </cite>
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-area">3) Creación de la red Zigbee</h4><br>
+                            <p class="text-justify">En este menú de configuración se define un (ID PAN ID) igual para toda la red y se habilita la opción (CE Coordinator Enable); Por último, se selecciona el botón Write para guardar los cambios. Siendo estos parámetros lo únicos que se deben configurar al módulo XBEE denominado coordinador</p><br>
+                            <img src="{% static 'assets/images/media/xctu_6.jpg' %}"><br>
+                            <p class="text-justify">En el caso del módulo xbee router, se selecciona el modulo para abrir el menú de configuración, se cambia el parámetro (ID PAN ID) por el mismo que se configuro en el módulo xbee coordinador,se habilita el parámetro (JV Channel Verification) esto permite verificar si hay un coordinador valido en este canal si no hay busca un coordinador valido en otros canales, se verifica si el parámetro (CE Coordinator Enable) se encuentra deshabilitado. Por ultimo se selecciona el boton Write para guardar cambios.
+                                Con esto se configura el modulo xbee en modo router .</p><br>
+                                <img src="{% static 'assets/images/media/xctu_6.jpg' %}"><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-area">4) Verificación de conectividad entre coordinador y nodo</h4><br>
+                            <p class="text-justify">Para verificar la comunicación entre los dispositivos se selecciona en botón consola</p><br>
+                            <img src="{% static 'assets/images/media/xctu_8.jpg' %}"><br>
+                            <p class="text-justify">Con en esta ventana se pueden ver dos consolas ya que tenemos dos módulos conectados </p><br>
+                            <img src="{% static 'assets/images/media/xctu_9.jpg' %}"><br>
+                            <p>Para este proceso se selecciona uno de los dos módulos que se encuentran en el recuadro 1, y se selecciona la opción Open la cual debe cambiar de la siguiente manera.</p><br>
+                            <img src="{% static 'assets/images/media/xctu_11.jpg' %}"><br>
+                            <p>De esta forma los dos módulos ya están listos para la transmisión y recepción de información, para verificar se ingresan un mensaje en la consola del coordinador y posterior a esto se verifica la información obtenida en la consola del módulo router. </p><br>
+                            <p>Si realizó cambios en la configuracion del módulo XBEE coordinador registrelos en el siguiente formulario</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-area text-info">Registro de cambios en Coordinador ZIGBEE</h4><br>
+                            <form class="contact-form" method="POST" action="/zigbee_config/">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="dispositivo">Dispositivo</label>
+                                    <input type="text" class="form-control" name="device" placeholder="XBEE S2C 2.4Ghz" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pan_id">PAN ID</label>
+                                    <input type="text" class="form-control" name="pan_id" placeholder="192.168.4.2" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="MAC">MAC Address</label>
+                                    <input type="text" class="form-control" name="mac" placeholder="0013A2004108211C" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Baud Rate">Baud Rate</label>
+                                    <input type="text" class="form-control" name="bauds" placeholder="9600" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Parity">Parity</label>
+                                    <input type="text" class="form-control" name="parity" placeholder="None" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="flow_control">Flow Control</label>
+                                    <input type="text" class="form-control" name="flow_control" placeholder="None" required="">
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Guardar Cambios</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "panel/base.html" %}
+{% load static %}
+{% block content %}
+<div class="main-content-inner">
+    <div class="row">
+        <!-- data table start -->
+        <div class="col-lg-6 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="header-area text-center">Direcciones IP conectadas a la red wifi</h5>        
+                       <ul>
+                       {% if nodos %}
+                       {% for nodo in nodos %}
+                       <li>{{nodo}}</li>
+                       {% endfor %}
+                       {% else %}
+                       <p>No hay dispositivos conectados</p>
+                       {% endif %}
+                       </ul>
+                       <span><p>Escaneo terminado en: {{tiempo}}</p></span>
+                       <a href="/wifi_scan/">refrescar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
